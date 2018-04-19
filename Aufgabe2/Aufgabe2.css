@@ -47,24 +47,26 @@ h2 {
   position: relative;
   height: auto;
   width: 100%;
+ 
 
 }
-.Karte {
+.card {
   height: 175px;
   width: 175px;
   border-radius: 5px;
   margin: 0px 20px 20px 0px;
+  float:left;
   cursor: pointer;
   text-align: center;
   line-height: 175px;
   position: relative;
-  background: white;
+  background: yellow;
   transition: all 1s ease-in-out;
   -webkit-transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
   pointer-events: auto;
 }
-.Karte::after {
+.card::after {
   content: "";
   position: absolute;
   top: 0;
@@ -83,13 +85,13 @@ h2 {
   transform: rotateY(180deg);
 }
 .taken {
-  background: #333;
+  background: grey;
   border: 2px solid rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
   transform: rotateY(180deg);
 }
 .taken::after {
-  background: #333;
+  background: grey;
   border: 2px solid rgba(0, 0, 0, 0.2);
   box-sizing: border
 }
