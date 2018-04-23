@@ -114,7 +114,7 @@ var Memory;
     function congratAlert() {
         var cardsTaken = filterCardsByClass("hidden");
         if (cardsTaken.length == 0) {
-            alert("Gl�ckwunsch !");
+            alert("Sauber!");
         }
         cardsTaken = [];
     }

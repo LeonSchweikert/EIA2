@@ -173,7 +173,7 @@ namespace Memory {
     function congratAlert(): void {
         let cardsTaken: HTMLElement[] = filterCardsByClass("hidden");
         if (cardsTaken.length == 0) {                                        // wenn alle Kartenpaare gefunden wurden erschein pop up fenster mit nachricht
-            alert("Glückwunsch !");
+            alert("Sauber!");
         }
         cardsTaken = [];
     }
