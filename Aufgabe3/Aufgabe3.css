@@ -63,7 +63,7 @@ h2 {
   background: yellow;
   transition: all 1s ease-in-out;
   -webkit-transform-style: preserve-3d;
-  -webkit-backface-visibility: hidden;
+  -webkit-backface-visibility: visible;
   pointer-events: auto;
 }
 .card::after {
