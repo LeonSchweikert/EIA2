@@ -1,0 +1,66 @@
+
+
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Memory-Spiel</title>
+  <script src="Aufgabe4.js"></script>
+  <script src="Datenstrukturen.js"></script>
+  <link rel="stylesheet" href="Aufgabe4.css">
+  
+
+</head>
+
+<body>
+<section>
+
+
+<div id="interface">
+
+<div id="names">
+
+    <input type="text" placeholder="Spielernamen eingeben" name="player" maxlength="20" />
+    
+    </div>
+    
+    <button id="addplayer" class="buttonplayer">+</button>
+    
+    <button id="removeplayer" class="buttonplayer">-</button>
+    
+   
+
+    <h3>Kartendeck wählen</h3>
+    
+      <select id="Auswahl" name="carddeck" onchange="createAuswahl()">
+    
+      <option disabled selected>Kartendeck wählen</option>
+      
+      <option value="Drinks">Drinks</option>
+      <option value="Tiere">Tiere</option>
+      <option value="Namen">Namen</option>
+      
+    </select>
+
+    <h3>Anzahl Kartenpaare wählen</h3>
+
+    <div id="stepperbox"></div>
+
+    <button class="StartButton" id="start">Start</button>
+    
+    
+    </div>
+
+</section>
+
+  <section id="Spielinfo">
+    <h2>Spielinfo</h2>
+  </section>
+  
+  <section id="Spielfeld">
+    <h2>Spielfeld</h2>
+    <p>
+  </section>
+
+</body>
+</html>
