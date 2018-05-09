@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Memory</title>
+
+<link type="text/css" rel="stylesheet" href="memoryv2.css">
+<style>
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+</style> 
+<script type="text/javascript" src="memoryv2.js"></script>
+<script type="text/javascript" src="memoryv2.1.js"></script>
+
+</head>
+
+<body>
+
+	<div id="interface">
+	    <h1>Memory</h1>
+		<h2>Spieleranzahl und Namen eingeben</h2>
+		
+		<button id="plusplayer">Spieler hinzugügen</button>
+		<button id="minusplayer">Spieler entfernen</button>
+		
+		<div id="nameplayer">
+			<input type="text" placeholder="Spielernamen eingeben" name="player"
+				maxlength="15" />
+		</div>
+		<h2>Deck auswählen</h2>
+		
+		<select id="sliderinfo" name="carddeck" onchange="createSlider()">
+			<option disabled selected>Kartendeck wählen</option>
+			<option value="Drinks">Drinks</option>
+			<option value="Tiere">Tiere</option>
+			<option value="Namen">Namen</option>
+		</select>
+
+		<h2>Kartenanzahl</h2>
+
+		<div id="sliderbox"></div>
+           <p>
+           <p>
+           
+	<button id="start">Start</button>	
+	</div>
+
+
+	<section id="Spielinfo">
+		<h2>Spielinfo</h2>
+	</section>
+	<section id="Spielfeld">
+	
+		<h2>Memory</h2>
+		<div id="spielerbox"></div>
+	</section>
+	
+</body>
+</html>

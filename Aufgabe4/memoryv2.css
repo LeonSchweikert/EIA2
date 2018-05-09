@@ -1,0 +1,180 @@
+@charset "UTF-8";
+
+body {
+	background-color: lightgrey;
+	font-family: 'Oswald', sans-serif;
+}
+
+
+h1{
+	text-align: center;
+	font-size: 4em;
+	color: red;
+	margin-bottom:0em;
+	
+}
+
+
+h2 {
+	text-align: center;
+	font-size: 2em;
+	color: black;
+}
+
+/* Menü */
+
+#interface {
+	display: block;
+}
+
+#interface h2 {
+	text-align: center;
+	border-bottom: 1px solid black;
+}
+
+#start {
+	margin-top: 20px;
+	display: block;
+	border: 2px solid black;
+	color: black;
+	cursor: pointer;
+	padding: 10px 20px 10px 20px;
+	font-size: 3em;
+	font-weight: bold;
+	margin-left:43%;
+	
+}
+
+#interface button {
+	margin-top: 20px;
+	display: block;
+	border: 2px solid black;
+	color: black;
+	cursor: pointer;
+	padding: 10px 20px 10px 20px;
+	font-weight: bold;
+	margin-left:43%;
+}
+
+
+#nameplayer input {
+	margin-top: 20px;
+	display: block;
+	margin-left:43%;
+}
+
+#sliderbox {
+	color: black;
+	margin-left:43%;
+}
+
+#sliderinfo{
+	color: black;
+	margin-left:43%;
+	
+}
+
+
+#Spielinfo {
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 20%;
+	height: 100%;
+	background-color:grey;
+	display: none;
+	box-sizing: border-box;
+  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.8);
+}
+
+#Spielinfo h2 {
+	color: black;
+}
+
+#Spielfeld h2{
+	color:red;
+	font-size:4em;
+}
+
+#Spielinfo div {
+	margin: auto;
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-size: 1.25em;
+	background-color:red;
+}
+
+/* Memory */
+
+
+#Spielfeld {
+	width: 80%;
+	height: auto;
+	display: none;
+}
+
+#spielerbox {
+	height: auto;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+
+.card {
+	height: 175px;
+  width: 175px;
+  border-radius: 5px;
+  margin: 0px 20px 20px 0px;
+  float:left;
+  cursor: pointer;
+  text-align: center;
+  line-height: 100px;
+  font-size: 2em;
+  position: relative;
+  background: green;
+  transition: all 1s ease-in-out;
+  -webkit-transform-style: preserve-3d;
+  -webkit-backface-visibility: visible;
+  pointer-events: auto;
+}
+
+
+.card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: grey;
+  border-radius: 5px;
+  transition: all 1s ease;
+  transform: rotateY(180deg);
+  -webkit-transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  pointer-events: none;
+}
+
+
+.hidden {
+  transform: rotateY(180deg);
+}
+
+.hidden p {
+	display: none;
+}
+
+.open {
+	background-color: red;
+}
+
+.taken {
+	background-color: lightgrey;
+}
+
+.taken p {
+	display: none;
+}
