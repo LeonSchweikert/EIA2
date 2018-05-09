@@ -9,12 +9,14 @@ var Aufgabe4;
     var spielerCounter = 1;
     var sliderA = 1;
     var spielerPunkte = 0;
+    //main function
     function main() {
         document.getElementById("start").addEventListener("click", start);
         document.getElementById("plusplayer").addEventListener("click", addPlayer);
         document.getElementById("minusplayer").addEventListener("click", removePlayer);
         document.getElementById("sliderinfo").addEventListener("change", createSlider);
     }
+    //spieler hinzuf�gen
     function addPlayer() {
         if (spielerCounter < 4) {
             var player = document.createElement("input");
@@ -27,12 +29,14 @@ var Aufgabe4;
             spielerCounter++;
         }
     }
+    //spieler entfernen
     function removePlayer() {
         var allPlayer = document.getElementsByClassName("player");
         var lastPlayer = allPlayer[allPlayer.length - 1];
         lastPlayer.remove();
         spielerCounter--;
     }
+    //slider initialisieren
     function createSlider() {
         if (sliderA == 1) {
             var slider = document.createElement("input");
@@ -56,6 +60,7 @@ var Aufgabe4;
             sliderUpdate();
         }
     }
+    //slider neu
     function sliderUpdate() {
         document.getElementById("slider").remove();
         document.getElementById("sliderValue").remove();
@@ -90,6 +95,7 @@ var Aufgabe4;
             }
         }
     }
+    //Karten vergleichen
     function compareCards() {
         if (kartenOArray[0].innerHTML == kartenOArray[1].innerHTML) {
             for (var i = 0; i < 2; i++) {
@@ -106,9 +112,9 @@ var Aufgabe4;
         }
         kartenOArray = [];
         kartenO = 0;
-        checkWin();
+        sieg();
     }
-    function checkWin() {
+    function sieg() {
         if (kartenrest.length == 0) {
             alert("Sauber!");
         }
@@ -123,7 +129,7 @@ var Aufgabe4;
         }
         return _array;
     }
-    // Main Funktion zum Anzeigen der Spielerinfo und dem Memory
+    // Main Funktion ausblenden interface/men�, anzeigen Spielfeld und Spielinfo
     function start() {
         document.getElementById("interface").style.display = "none";
         document.getElementById("Spielinfo").style.display = "block";
@@ -140,7 +146,7 @@ var Aufgabe4;
             createCard(Aufgabe4.cards[document.getElementsByTagName("select").item(0).value].cardContent[i]);
             createCard(Aufgabe4.cards[document.getElementsByTagName("select").item(0).value].cardContent[i]);
         }
-        //Aufruf der Shuffle Algorithmusses    
+        //Karten mischen    
         shuffleArray(kartenA);
         for (var i = 0; i < kartenA.length; i++) {
             document.getElementById("spielerbox").appendChild(kartenA[i]);

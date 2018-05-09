@@ -14,6 +14,8 @@ namespace Aufgabe4 {
     let sliderA: number = 1;
     let spielerPunkte: number = 0;
 
+    
+    //main function
     function main(): void {
         document.getElementById("start").addEventListener("click", start);
         document.getElementById("plusplayer").addEventListener("click", addPlayer);
@@ -21,6 +23,8 @@ namespace Aufgabe4 {
         document.getElementById("sliderinfo").addEventListener("change", createSlider);
     }
 
+    
+    //spieler hinzufügen
     function addPlayer(): void {
         if (spielerCounter < 4) {
             let player: HTMLElement = document.createElement("input");
@@ -34,6 +38,8 @@ namespace Aufgabe4 {
         }
     }
 
+    
+    //spieler entfernen
     function removePlayer(): void {
         let allPlayer: NodeListOf<Element> = document.getElementsByClassName("player");
         let lastPlayer: HTMLInputElement = <HTMLInputElement>allPlayer[allPlayer.length - 1];
@@ -41,6 +47,7 @@ namespace Aufgabe4 {
         spielerCounter--;
     }
 
+    //slider initialisieren
     function createSlider(): void {
         if (sliderA == 1) {
             let slider: HTMLElement = document.createElement("input");
@@ -64,6 +71,7 @@ namespace Aufgabe4 {
         }
     }
 
+    //slider neu
     function sliderUpdate(): void {
         document.getElementById("slider").remove();
         document.getElementById("sliderValue").remove();
@@ -99,7 +107,9 @@ namespace Aufgabe4 {
             }
         }
     }
-
+ 
+    
+    //Karten vergleichen
     function compareCards(): void {
 
         if (kartenOArray[0].innerHTML == kartenOArray[1].innerHTML) {
@@ -116,12 +126,12 @@ namespace Aufgabe4 {
         }
        kartenOArray = [];
        kartenO = 0;
-        checkWin();
+        sieg();
     }
 
 
 
-    function checkWin(): void {
+    function sieg(): void {
         if (kartenrest.length == 0) {
             alert("Sauber!");
         }
@@ -138,7 +148,7 @@ namespace Aufgabe4 {
         return _array;
     }
 
-    // Main Funktion zum Anzeigen der Spielerinfo und dem Memory
+    // Main Funktion ausblenden interface/menü, anzeigen Spielfeld und Spielinfo
     function start(): void {
         document.getElementById("interface").style.display = "none";
         document.getElementById("Spielinfo").style.display = "block";
@@ -159,7 +169,7 @@ namespace Aufgabe4 {
             createCard(cards[document.getElementsByTagName("select").item(0).value].cardContent[i]);
         }
 
-        //Aufruf der Shuffle Algorithmusses    
+        //Karten mischen    
         shuffleArray(kartenA);
 
         for (let i: number = 0; i < kartenA.length; i++) {
