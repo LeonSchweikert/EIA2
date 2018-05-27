@@ -1,17 +1,19 @@
 * {
-	display: block;
-	vertical-align: top
+	display: block;	
+	background-color:lightgrey;
+	font-family: 'Hind Siliguri', sans-serif;
 }
 
 head {
-	display: none;
+	display: none;   <!--head ausblenden--!>
 }
 
 
-input[type="radio"], input[type="checkbox"], input[type="number"], label {
-	display: inline;
-}
+
 
 button {
-	margin:1em 0em;
+	margin:0.3em 0em;
+	background-color:blue;
+	color:white;
+	border:1px solid blue;
 }
