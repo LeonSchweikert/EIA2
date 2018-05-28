@@ -2,12 +2,12 @@
 namespace StudiVZ {
     
     window.addEventListener("load", input);
-    let source: string = "https://eia2-node-leonschweikert.herokuapp.com";
+    let source: string = "https://leoneia2-node.herokuapp.com/";
 
     let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
 
 
-    function input(_event: Event): void {          //Funktion innput, Buttons mit Listener initialiesieren
+    function input(_event: Event): void {                                                       //Funktion innput, Buttons mit Listener initialiesieren
         console.log("Input");
         
         let insertB: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insert");
@@ -47,8 +47,7 @@ namespace StudiVZ {
     }
 
     function handleRequest(_event: ProgressEvent): void {  
-                   console.log("");                                                     
-        var xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
+    var xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
         if (xhr.readyState == XMLHttpRequest.DONE) {                           //Gibt an das request abgeschlossen ist, Daten an Server geschickt              
             alert(xhr.response);                                               //alert Fenster mit Antwort: Daten empfangen
         }
