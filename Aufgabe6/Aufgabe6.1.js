@@ -1,7 +1,6 @@
 var StudiVZ;
 (function (StudiVZ) {
     window.addEventListener("load", input);
-    
     let source = "https://leoneia2-node.herokuapp.com/";
     let inputs = document.getElementsByTagName("input");
     function input(_event) {
