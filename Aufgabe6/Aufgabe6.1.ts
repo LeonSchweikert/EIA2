@@ -1,4 +1,4 @@
-//hallloo
+
 namespace StudiVZ {
     
     window.addEventListener("load", input);
