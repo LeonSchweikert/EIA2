@@ -70,7 +70,7 @@ namespace StudiVZ {
             output.value += xhr.response;
         }           
     }
-    
+     
     function search(_event: Event): void { 
                                                               //Suchfunktion 
         let mat: string = inputs[6].value;
