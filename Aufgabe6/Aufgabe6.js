@@ -4,3 +4,4 @@ var StudiVZ;
     StudiVZ.studiHomoAssoc = {};
 })(StudiVZ || (StudiVZ = {}));
 //# sourceMappingURL=Aufgabe6.js.map
+
