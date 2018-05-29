@@ -1,6 +1,8 @@
-namespace L04_Interfaces {
-    // Struktur des heterogenen assoziativen Arrays als Datensatz für eine studierende Person
-    export interface Studi {
+namespace StudiVZ {
+    
+    // Struktur assoziatives Array f�r angelegte Studentenprofile
+    
+    export interface Student {
         name: string;
         firstname: string;
         matrikel: number;
@@ -9,15 +11,11 @@ namespace L04_Interfaces {
         studiengang: string;
     }
 
-    // Struktur des homogenen assoziativen Arrays, bei dem ein Datensatz der Matrikelnummer zugeordnet ist
+    // Struktur des assoziativen Arrays in dem Matrikelnummer gespeichert wird
     export interface Studis {
-         [matrikel: string]: Studi;
+         [matrikel: string]: Student;
     }
-
-    // Simples Array zum Speichern der Studi-Datensätze (nur zur Demonstration)
-    export let studiSimpleArray: Studi[] = [];
-    
-    // Homogenes assoziatives Array zur Speicherung einer Person unter der Matrikelnummer
-    export let studiHomoAssoc: Studis = {};
-    
+ 
+    // assoziatives Array um eine Person mit Matrikel abzuspeichern
+    export let studiHomoAssoc: Studis = {};  
 }
