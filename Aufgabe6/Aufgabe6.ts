@@ -13,7 +13,7 @@ namespace StudiVZ {
 
     // Struktur des assoziativen Arrays in dem Matrikelnummer gespeichert wird
     export interface Studis {
-         [matrikel: string]: Student;
+        [matrikel: string]: Student;
     }
  
     // assoziatives Array um eine Person mit Matrikel abzuspeichern
