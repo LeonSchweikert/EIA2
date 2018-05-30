@@ -25,7 +25,7 @@ namespace StudiVZ {
         let genderB: HTMLInputElement = <HTMLInputElement>document.getElementById("male");
         let matrikel: string = inputs[2].value;
         
-        let studi: Student;         // Variable studi vom Datentyp Student
+        let studi: Studis;         // Variable studi vom Datentyp Student
         studi = {                  //interface Student
             name: inputs[0].value,
             firstname: inputs[1].value,
