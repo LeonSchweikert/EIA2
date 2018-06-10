@@ -1,7 +1,7 @@
-var Aufgabe6;
-(function (Aufgabe6) {
-    window.addEventListener("load", init);
-    let address = "https://leoneia2-node.herokuapp.com/";
+var Aufgabe8;
+(function (Aufgabe8) {
+    window.addEventListener("load", init); //Listener initialisieren
+    let address = "https://leoneia2-node.herokuapp.com/"; //Verlinkung zu Server
     let inputs = document.getElementsByTagName("input");
     function init(_event) {
         console.log("Init");
@@ -34,7 +34,7 @@ var Aufgabe6;
     function handleStateChangeInsert(_event) {
         var xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            alert(xhr.response);
+            alert(xhr.response); //bei erfolgreicher �bertragung Alert response
         }
     }
     function refresh(_event) {
@@ -48,11 +48,11 @@ var Aufgabe6;
         output.value = "";
         var xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            output.value += xhr.response;
+            output.value += xhr.response; //bei erfolgreichem refresh wird response ausgef�hrt
         }
     }
     function search(_event) {
-        let mtrkl = inputs[6].value;
+        let mtrkl = inputs[6].value; //max 6 stellige Zahl
         let xhr = new XMLHttpRequest();
         xhr.open("GET", address + "?command=search&searchFor=" + mtrkl, true);
         xhr.addEventListener("readystatechange", handleStateChangeSearch);
@@ -66,5 +66,5 @@ var Aufgabe6;
             output.value += xhr.response;
         }
     }
-})(Aufgabe6 || (Aufgabe6 = {}));
+})(Aufgabe8 || (Aufgabe8 = {}));
 //# sourceMappingURL=Aufgabe8.1.js.map
