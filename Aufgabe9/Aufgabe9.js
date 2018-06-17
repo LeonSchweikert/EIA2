@@ -29,11 +29,11 @@ var Seaworld;
             let r = Math.random() * 300;
             let g = Math.random() * 300;
             let b = Math.random() * 300;
-            drawFish(x, y, r, g, b);
+            drawFish(x, y);
         }
         drawWater();
     }
-    function drawFish(_x, _y, _r, _g, _b) {
+    function drawFish(_x, _y) {
         crc2.beginPath();
         crc2.moveTo(_x, _y);
         crc2.bezierCurveTo(_x + 60, _y + 55, _x + 65, _y - 35, _x, _y + 20);

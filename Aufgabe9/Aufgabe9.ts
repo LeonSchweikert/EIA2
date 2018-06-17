@@ -40,7 +40,7 @@ namespace Seaworld {
             let r: number = Math.random() * 300;
             let g: number = Math.random() * 300;
             let b: number = Math.random() * 300;
-            drawFish(x, y, r, g, b);
+            drawFish(x, y);
         }
 
         drawWater();
@@ -48,7 +48,7 @@ namespace Seaworld {
     
 
 
-    function drawFish(_x: number, _y: number, _r: number, _g: number, _b: number): void {
+    function drawFish(_x: number, _y: number): void {
         crc2.beginPath();
         crc2.moveTo(_x, _y);
         crc2.bezierCurveTo(_x + 60, _y + 55, _x + 65, _y - 35, _x, _y + 20);
