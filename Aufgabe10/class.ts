@@ -5,11 +5,11 @@ namespace SeaworldCanvas {
         y: number;
        
 
-        // declare method without keyword function
+    
         move(): void {
             this.x += 2;
             
-            if (this.x > 300) {
+            if (this.x > 200) {
                 this.x = -100;
             }
         }

@@ -1,10 +1,9 @@
 var SeaworldCanvas;
 (function (SeaworldCanvas) {
     class Fish {
-        // declare method without keyword function
         move() {
             this.x += 2;
-            if (this.x > 300) {
+            if (this.x > 200) {
                 this.x = -100;
             }
         }
