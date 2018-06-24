@@ -9,8 +9,8 @@ namespace SeaworldCanvas {
         move(): void {
             this.x += 2;
             
-            if (this.x > 200) {
-                this.x = -100;
+            if (this.x > 360) {
+                this.x = -40;
             }
         }
 
