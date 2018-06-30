@@ -9,7 +9,7 @@ namespace SeaworldCanvas2 {
         
         setPosition(): void {
             this.x = Math.random() * (220 - 200) + 200;
-            this.y = Math.random() * 180;    
+            this.y = Math.random() * 500;    
         }
         
       
@@ -18,7 +18,7 @@ namespace SeaworldCanvas2 {
             this.y -= 2;
 
             if (this.y < 0) {
-                this.y = 200;
+                this.y = 500;
             }
 
         }
