@@ -8,7 +8,7 @@ namespace SeaworldCanvas2 {
         }
         
         setPosition(): void {
-            this.x = Math.random() * (220 - 200) + 300;
+            this.x = Math.random() * (220 - 200) + 200;
             this.y = Math.random() * 180;    
         }
         

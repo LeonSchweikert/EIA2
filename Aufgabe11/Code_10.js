@@ -29,8 +29,6 @@ var SeaworldCanvas2;
         }
         for (let i = 0; i < n; i++) {
             let bubble = new SeaworldCanvas2.Bubbles();
-            bubble.x = Math.random() * (220 - 200) + 300;
-            bubble.y = Math.random() * 180;
             objects.push(bubble);
         }
         canvas.addEventListener("click", insertNewObjects);

@@ -46,8 +46,7 @@ namespace SeaworldCanvas2 {
         for (let i: number = 0; i < n ; i++) {
             
             let bubble: Bubbles = new Bubbles();
-            bubble.x = Math.random() * (220 - 200) +300;
-            bubble.y = Math.random() * 180;
+           
           
             objects.push(bubble);
         }
