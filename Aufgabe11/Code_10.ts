@@ -38,8 +38,7 @@ namespace SeaworldCanvas2 {
         for (let i: number = 0; i < n; i++) {
             
             let fish: Fish = new Fish();
-            fish.x = Math.random() * crc2.canvas.width;
-            fish.y = Math.random() * 180;
+           
             objects.push(fish);
         }
 

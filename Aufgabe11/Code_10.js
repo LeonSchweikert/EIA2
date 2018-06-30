@@ -23,8 +23,6 @@ var SeaworldCanvas2;
         imagedata = SeaworldCanvas2.crc2.getImageData(0, 0, 360, 640);
         for (let i = 0; i < n; i++) {
             let fish = new SeaworldCanvas2.Fish();
-            fish.x = Math.random() * SeaworldCanvas2.crc2.canvas.width;
-            fish.y = Math.random() * 180;
             objects.push(fish);
         }
         for (let i = 0; i < n; i++) {
