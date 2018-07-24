@@ -291,7 +291,7 @@ namespace Rageworld {
 
 
 
-
+   //Human
     drawHead(280, 600)
     drawTriangle(200, 620);
 
@@ -303,7 +303,7 @@ namespace Rageworld {
 
 
 
-
+    //Draw Funktionen
 
     function drawBottom(): void {
         crc2.beginPath();
@@ -429,9 +429,9 @@ namespace Rageworld {
     function drawTriangle(_x: number, _y: number): void {
         crc2.beginPath();
         crc2.moveTo(-40, 730);
-        crc2.lineTo(80, 620); // draw straight down by 200px (200 + 200)
-        crc2.lineTo(210, 730); // draw up toward left (100 less than 300, so left)
-        crc2.closePath(); // connect end to start
+        crc2.lineTo(80, 620); 
+        crc2.lineTo(210, 730); 
+        crc2.closePath(); 
         crc2.fillStyle = "red";
         crc2.fill();
         crc2.stroke();

@@ -248,8 +248,10 @@ var Rageworld;
     drawWindow4(335, 530);
     drawAdvert3(280, 560);
     drawEntry4(310, 575);
+    //Human
     drawHead(280, 600);
     drawTriangle(200, 620);
+    //Draw Funktionen
     function drawBottom() {
         Rageworld.crc2.beginPath();
         Rageworld.crc2.moveTo(0, 640);
@@ -332,9 +334,9 @@ var Rageworld;
     function drawTriangle(_x, _y) {
         Rageworld.crc2.beginPath();
         Rageworld.crc2.moveTo(-40, 730);
-        Rageworld.crc2.lineTo(80, 620); // draw straight down by 200px (200 + 200)
-        Rageworld.crc2.lineTo(210, 730); // draw up toward left (100 less than 300, so left)
-        Rageworld.crc2.closePath(); // connect end to start
+        Rageworld.crc2.lineTo(80, 620);
+        Rageworld.crc2.lineTo(210, 730);
+        Rageworld.crc2.closePath();
         Rageworld.crc2.fillStyle = "red";
         Rageworld.crc2.fill();
         Rageworld.crc2.stroke();
