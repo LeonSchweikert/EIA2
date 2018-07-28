@@ -1,11 +1,13 @@
 var Rageworld;
 (function (Rageworld) {
     window.addEventListener("load", init);
+    let bombs = [];
     let humans = [];
-    let fishs = [];
+    let aliens = [];
     let bubbles = [];
     let n = 5;
     let imagedata;
+    alert("Defeat all Humans! click on the screen to release bombs");
     function init(_event) {
         let canvas = document.getElementsByTagName("canvas")[0];
         Rageworld.ctx = canvas.getContext("2d");
@@ -225,7 +227,6 @@ var Rageworld;
         drawWindow4(335, 530);
         drawAdvert3(280, 560);
         drawEntry4(310, 575);
-        drawTriangle(200, 620);
         imagedata = Rageworld.ctx.getImageData(0, 0, 360, 640);
         //Schleife Mensch
         for (let i = 0; i < 3; i++) {
@@ -234,12 +235,12 @@ var Rageworld;
             human.y = (620 - 610) + 620;
             humans.push(human);
         }
-        //Schleife Fish
+        //Schleife Alien
         for (let i = 0; i < 1; i++) {
-            let fish = new Rageworld.Fish();
-            fish.x = Math.random() * Rageworld.ctx.canvas.width;
-            fish.y = Math.random() * 180;
-            fishs.push(fish);
+            let alien = new Rageworld.Alien();
+            alien.x = Math.random() * Rageworld.ctx.canvas.width;
+            alien.y = Math.random() * 180;
+            aliens.push(alien);
         }
         //Schleife Rauch
         for (let i = 0; i < 10; i++) {
@@ -255,10 +256,10 @@ var Rageworld;
         window.setTimeout(animate, 10);
         Rageworld.ctx.putImageData(imagedata, 0, 0);
         moveHumans();
-        moveFishes();
+        moveAliens();
         moveBubbles();
         drawHumans();
-        drawFishes();
+        drawAliens();
         drawBubbles();
     }
     function moveHumans() {
@@ -266,14 +267,14 @@ var Rageworld;
             humans[i].move();
         }
     }
-    function moveFishes() {
-        for (let i = 0; i < fishs.length; i++) {
-            fishs[i].move();
+    function moveAliens() {
+        for (let i = 0; i < aliens.length; i++) {
+            aliens[i].move();
         }
     }
-    function drawFishes() {
-        for (let i = 0; i < fishs.length; i++)
-            fishs[i].draw();
+    function drawAliens() {
+        for (let i = 0; i < aliens.length; i++)
+            aliens[i].draw();
     }
     function moveBubbles() {
         for (let i = 0; i < bubbles.length; i++) {
@@ -360,16 +361,6 @@ var Rageworld;
     function drawEntry4(_x, _y) {
         Rageworld.ctx.fillStyle = "#989898";
         Rageworld.ctx.fillRect(_x, _y, 25, 35);
-    }
-    function drawTriangle(_x, _y) {
-        Rageworld.ctx.beginPath();
-        Rageworld.ctx.moveTo(-40, 730);
-        Rageworld.ctx.lineTo(80, 620);
-        Rageworld.ctx.lineTo(210, 730);
-        Rageworld.ctx.closePath();
-        Rageworld.ctx.fillStyle = "white";
-        Rageworld.ctx.fill();
-        Rageworld.ctx.stroke();
     }
     function drawSky() {
         Rageworld.ctx.beginPath();

@@ -2,14 +2,16 @@ namespace Rageworld {
 
     window.addEventListener("load", init);
 
-    
-    let humans: Human[] = []; 
-    let fishs: Fish[] = [];        
+    let bombs: Bombs[] = [];
+    let humans: Human[] = [];
+    let aliens: Alien[] = [];
     let bubbles: Bubbles[] = [];
     let n: number = 5;
     export let ctx: CanvasRenderingContext2D;
 
     let imagedata: ImageData;
+
+    alert("Defeat all Humans! click on the screen to release bombs")
 
     function init(_event: Event): void {
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
@@ -249,37 +251,33 @@ namespace Rageworld {
         drawEntry4(310, 575);
 
 
-        
-        drawTriangle(200, 620);
-
-
 
 
         imagedata = ctx.getImageData(0, 0, 360, 640);
 
-        
+
         //Schleife Mensch
-        
+
         for (let i: number = 0; i < 3; i++) {
             let human: Human = new Human();
             human.x = Math.random() * ctx.canvas.width;
             human.y = (620 - 610) + 620;
             humans.push(human);
         }
-    
-    
-        
-        //Schleife Fish
-        
+
+
+
+        //Schleife Alien
+
         for (let i: number = 0; i < 1; i++) {
-            let fish: Fish = new Fish();
-            fish.x = Math.random() * ctx.canvas.width;
-            fish.y = Math.random() * 180;
-            fishs.push(fish);
+            let alien: Alien = new Alien();
+            alien.x = Math.random() * ctx.canvas.width;
+            alien.y = Math.random() * 180;
+            aliens.push(alien);
         }
-        
-        
-        
+
+
+
 
 
         //Schleife Rauch
@@ -292,50 +290,53 @@ namespace Rageworld {
         }
 
 
-       
+
 
 
 
         animate();
     }
 
+
+
+
     function animate(): void {
         window.setTimeout(animate, 10);
 
         ctx.putImageData(imagedata, 0, 0);
-         
-         moveHumans()
-         moveFishes();
+
+        moveHumans()
+        moveAliens();
         moveBubbles();
         drawHumans()
-        drawFishes();
+        drawAliens();
         drawBubbles();
 
-      
+
     }
-    
-    
-    
+
+
+
     function moveHumans(): void {
         for (let i: number = 0; i < humans.length; i++) {
             humans[i].move();
         }
     }
-    
-    
-    
 
-     function moveFishes(): void {
-        for (let i: number = 0; i < fishs.length; i++) {
-            fishs[i].move();
+
+
+
+    function moveAliens(): void {
+        for (let i: number = 0; i < aliens.length; i++) {
+            aliens[i].move();
         }
     }
-    
-    function drawFishes(): void {
-        for (let i: number = 0; i < fishs.length; i++)
-            fishs[i].draw();
+
+    function drawAliens(): void {
+        for (let i: number = 0; i < aliens.length; i++)
+            aliens[i].draw();
     }
-    
+
 
 
     function moveBubbles(): void {
@@ -348,14 +349,14 @@ namespace Rageworld {
         for (let i: number = 0; i < bubbles.length; i++)
             bubbles[i].draw();
     }
-    
-    
-     function drawHumans(): void {
+
+
+    function drawHumans(): void {
         for (let i: number = 0; i < humans.length; i++)
             humans[i].draw();
     }
 
-   
+
 
 
 
@@ -460,18 +461,8 @@ namespace Rageworld {
 
 
 
-    
 
-    function drawTriangle(_x: number, _y: number): void {
-        ctx.beginPath();
-        ctx.moveTo(-40, 730);
-        ctx.lineTo(80, 620);
-        ctx.lineTo(210, 730);
-        ctx.closePath();
-        ctx.fillStyle = "white";
-        ctx.fill();
-        ctx.stroke();
-    }
+
 
 
 
@@ -489,6 +480,78 @@ namespace Rageworld {
         ctx.fill();
         ctx.closePath();
     }
+
+
+    
+    
+    
+    /*
+    function releaseBomb(_event: MouseEvent): void {
+
+        let x: number = aliens._x + 80;
+        let y: number = aliens._y + 25;
+
+        let bomb: Bombs = new bomb(_x,_y);
+        bombs.push(bomb);
+
+
+        if (bombs.length > 4) {
+            bombs.pop();
+        }
+
+        let bombsX: number = bombs. x;
+        let bombsY: number = bombs. y;
+
+        checkIfHit(bombsX, bombsY);
+
+    }
+
+    function checkIfHit(x: number, y: number): void {
+        window.setTimeout(checkIfHit, 10);
+        let i: number = 0;
+        let n: number = 0;
+
+        // Funktion um Menschen Koordinaten herauszufinden
+        for (let n: number = 0; n < Human.length; n++) {
+            let humanposition = Human[n];
+
+
+            // Funktion um Bomben Koordinaten herauszufinden
+            for (let i: number = 0; i < Bombs.length; i++) {
+                let bombsposition = Bombs[i];
+
+                // Bombs entfernen, wenn sie außerhalb des Canvas sind
+                if (Bombs[i].y > 660) {
+                    Bombs.splice(i, 1);
+                }
+
+
+
+
+                // eigentliche Compare Funktion von Bombs und Human Position
+    
+                if (Bombs[i].y > 720 && Bombs[i].y < 800 && Bombs[i].x >= movingObjects[n].x && rayArray[i].x <= movingObjects[n].x + 85) {
+                    movingObjects.splice(n, 1);
+                }
+
+            }
+        }
+
+        if (Human.length < 1) {
+
+
+            alert("Mission accomplished !");
+
+        }
+    } 
+
+
+
+*/
+
+
+
+
 
 }
 
