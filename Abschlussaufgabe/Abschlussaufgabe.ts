@@ -2,18 +2,22 @@ namespace Rageworld {
 
     window.addEventListener("load", init);
 
+
     let bombs: Bombs[] = [];
     let humans: Human[] = [];
-    let aliens: Alien[] = [];
     let bubbles: Bubbles[] = [];
-    let n: number = 5;
     export let ctx: CanvasRenderingContext2D;
-
     let imagedata: ImageData;
+    
 
-    alert("Defeat all Humans! click on the screen to release bombs")
+
 
     function init(_event: Event): void {
+    alert("Make it Rain! click on the screen to release raindrops,try to hit the people on the street");
+
+
+
+
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
         ctx = canvas.getContext("2d");
 
@@ -31,8 +35,8 @@ namespace Rageworld {
         drawChimney(200, 280);    //Kamin2
 
 
-        //Fenster Haus1
-        drawWindow1(10, 340);
+       
+        drawWindow1(10, 340);   //Fenster Haus1
         drawWindow1(30, 340);
         drawWindow1(50, 340);
         drawWindow1(70, 340);
@@ -62,8 +66,8 @@ namespace Rageworld {
 
         drawEntry1(20, 600);
 
-        //Fenster Haus2
-        drawWindow2(110, 230);
+        
+        drawWindow2(110, 230);  //Fenster Haus2
         drawWindow2(130, 230);
         drawWindow2(150, 230);
         drawWindow2(170, 230);
@@ -108,9 +112,9 @@ namespace Rageworld {
         drawEntry2(120, 585);
 
 
-        // Fenster Haus3
+       
 
-        drawWindow3(205, 270);
+        drawWindow3(205, 270);   // Fenster Haus3
         drawWindow3(225, 270);
         drawWindow3(245, 270);
         drawWindow3(205, 290);
@@ -163,9 +167,9 @@ namespace Rageworld {
         drawWindow3(245, 570);
         drawEntry3(210, 590);
 
-        // Fenster Haus4
+       
 
-        drawWindow4(290, 140);
+        drawWindow4(290, 140);    // Fenster Haus4
         drawWindow4(305, 140);
         drawWindow4(320, 140);
         drawWindow4(335, 140);
@@ -254,6 +258,11 @@ namespace Rageworld {
 
 
         imagedata = ctx.getImageData(0, 0, 360, 640);
+        
+         
+        
+
+
 
 
         //Schleife Mensch
@@ -267,20 +276,9 @@ namespace Rageworld {
 
 
 
-        //Schleife Alien
-
-        for (let i: number = 0; i < 1; i++) {
-            let alien: Alien = new Alien();
-            alien.x = Math.random() * ctx.canvas.width;
-            alien.y = Math.random() * 180;
-            aliens.push(alien);
-        }
-
-
-
-
 
         //Schleife Rauch
+
         for (let i: number = 0; i < 10; i++) {
             let bubble: Bubbles = new Bubbles();
             bubble.x = Math.random() * (220 - 190) + 20;
@@ -291,51 +289,104 @@ namespace Rageworld {
 
 
 
-
-
-
+        canvas.addEventListener("click", releaseBomb);
+        hitHuman();
         animate();
+    
     }
 
 
 
 
     function animate(): void {
-        window.setTimeout(animate, 10);
-
+   
         ctx.putImageData(imagedata, 0, 0);
 
-        moveHumans()
-        moveAliens();
+
+        if (humans.length ==0) {
+   
+             alert("Congrats!");
+             window.location.reload();
+
+               
+              }else{
+    
+
+
+
+        moveHumans();
         moveBubbles();
-        drawHumans()
-        drawAliens();
+        moveBombs();
+        drawHumans();
         drawBubbles();
+        drawBombs();
+        moveBombs();
+        
+        window.setTimeout(animate, 10);
 
 
     }
+    }
+
+
+
+//Regentropfen auslösen
+
+function releaseBomb(_event: MouseEvent): void {
+    
+                  let mouseX: number= _event.clientX;
+                  let mouseY: number= _event.clientY;
+
+
+            let bomb: Bombs = new Bombs(mouseX, mouseY);
+            bombs.push(bomb);
+
+        }
+
+
+
+
+//Bei Treffen von Menschen
+
+function hitHuman(): void {
+    
+       window.setTimeout(hitHuman,10);
+      
+     for (let i: number =0; i< humans.length; i++) {
+    
+
+
+for (let s: number =0; s< bombs.length; s++){
+    
+   if (bombs[s].y > ctx.canvas.height) {
+          
+            bombs.splice(s,1);
+
+}    
+ if (bombs[s].x > humans[i].x && bombs[s].x < humans[i].x+20 && bombs[s].y > humans[i].y && bombs[s].y < humans[i].y+40) {
+    
+       humans.splice(i,1);
+
+}
+}
+}
+
+
+}
+
+
+
+
 
 
 
     function moveHumans(): void {
         for (let i: number = 0; i < humans.length; i++) {
+
             humans[i].move();
         }
     }
 
-
-
-
-    function moveAliens(): void {
-        for (let i: number = 0; i < aliens.length; i++) {
-            aliens[i].move();
-        }
-    }
-
-    function drawAliens(): void {
-        for (let i: number = 0; i < aliens.length; i++)
-            aliens[i].draw();
-    }
 
 
 
@@ -344,6 +395,7 @@ namespace Rageworld {
             bubbles[i].move();
         }
     }
+
 
     function drawBubbles(): void {
         for (let i: number = 0; i < bubbles.length; i++)
@@ -358,9 +410,23 @@ namespace Rageworld {
 
 
 
+    function moveBombs(): void {
+        for (let i: number = 0; i < bombs.length; i++) {
+            bombs[i].move();
+        }
+    }
+
+    function drawBombs(): void {
+        for (let i: number = 0; i < bombs.length; i++)
+            bombs[i].draw();
+    }
 
 
-    //Draw Funktionen
+
+
+
+
+    //Draw  Hintergrund Funktionen
     function drawBottom(): void {
         ctx.beginPath();
         ctx.moveTo(0, 640);
@@ -460,19 +526,13 @@ namespace Rageworld {
     }
 
 
-
-
-
-
-
-
     function drawSky(): void {
         ctx.beginPath();
         ctx.lineTo(0, 640);
         ctx.lineTo(360, 640);
         ctx.lineTo(360, 0);
         ctx.lineTo(0, 0);
-        let grad = ctx.createLinearGradient(400, 100, 360, 400);
+        let grad: CanvasGradient = ctx.createLinearGradient(400, 100, 360, 400);
         grad.addColorStop(0, "#989bf2");
         grad.addColorStop(0.5, "#d1d3ff");
         grad.addColorStop(1, "#edeeff");
@@ -481,77 +541,7 @@ namespace Rageworld {
         ctx.closePath();
     }
 
-
-    
-    
-    
-    /*
-    function releaseBomb(_event: MouseEvent): void {
-
-        let x: number = aliens._x + 80;
-        let y: number = aliens._y + 25;
-
-        let bomb: Bombs = new bomb(_x,_y);
-        bombs.push(bomb);
-
-
-        if (bombs.length > 4) {
-            bombs.pop();
-        }
-
-        let bombsX: number = bombs. x;
-        let bombsY: number = bombs. y;
-
-        checkIfHit(bombsX, bombsY);
-
-    }
-
-    function checkIfHit(x: number, y: number): void {
-        window.setTimeout(checkIfHit, 10);
-        let i: number = 0;
-        let n: number = 0;
-
-        // Funktion um Menschen Koordinaten herauszufinden
-        for (let n: number = 0; n < Human.length; n++) {
-            let humanposition = Human[n];
-
-
-            // Funktion um Bomben Koordinaten herauszufinden
-            for (let i: number = 0; i < Bombs.length; i++) {
-                let bombsposition = Bombs[i];
-
-                // Bombs entfernen, wenn sie auÃŸerhalb des Canvas sind
-                if (Bombs[i].y > 660) {
-                    Bombs.splice(i, 1);
-                }
-
-
-
-
-                // eigentliche Compare Funktion von Bombs und Human Position
-    
-                if (Bombs[i].y > 720 && Bombs[i].y < 800 && Bombs[i].x >= movingObjects[n].x && rayArray[i].x <= movingObjects[n].x + 85) {
-                    movingObjects.splice(n, 1);
-                }
-
-            }
-        }
-
-        if (Human.length < 1) {
-
-
-            alert("Mission accomplished !");
-
-        }
-    } 
-
-
-
-*/
-
-
-
-
+   
 
 }
 

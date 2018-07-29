@@ -2,19 +2,23 @@ namespace Rageworld {
 
 
     export class Bombs {
-       
+
         x: number;
         y: number;
-        border: number;
 
-        
+        constructor(_x: number, _y: number) {
+
+            this.x = _x;
+            this.y = _y;
+
+        }
+
+
 
         move(): void {
             this.y += 1;
-            
-            if (this.y > this.border) {
-                this.y = this.border;    
-            }
+
+
 
         }
 
@@ -22,7 +26,7 @@ namespace Rageworld {
             ctx.beginPath();
             ctx.arc(this.x, this.y, 3, 0, 5 * Math.PI);
             ctx.closePath();
-            ctx.fillStyle = "red";
+            ctx.fillStyle = "blue";
             ctx.fill();
         }
     }

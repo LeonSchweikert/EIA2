@@ -3,12 +3,10 @@ var Rageworld;
     window.addEventListener("load", init);
     let bombs = [];
     let humans = [];
-    let aliens = [];
     let bubbles = [];
-    let n = 5;
     let imagedata;
-    alert("Defeat all Humans! click on the screen to release bombs");
     function init(_event) {
+        alert("Make it Rain! click on the screen to release raindrops,try to hit the people on the street");
         let canvas = document.getElementsByTagName("canvas")[0];
         Rageworld.ctx = canvas.getContext("2d");
         drawSky(); //Himmel
@@ -19,8 +17,7 @@ var Rageworld;
         drawHouse4(350, 270); //Haus4
         drawChimney(180, 280); //Kamin1
         drawChimney(200, 280); //Kamin2
-        //Fenster Haus1
-        drawWindow1(10, 340);
+        drawWindow1(10, 340); //Fenster Haus1
         drawWindow1(30, 340);
         drawWindow1(50, 340);
         drawWindow1(70, 340);
@@ -46,8 +43,7 @@ var Rageworld;
         drawWindow1(50, 550);
         drawWindow1(70, 550);
         drawEntry1(20, 600);
-        //Fenster Haus2
-        drawWindow2(110, 230);
+        drawWindow2(110, 230); //Fenster Haus2
         drawWindow2(130, 230);
         drawWindow2(150, 230);
         drawWindow2(170, 230);
@@ -90,8 +86,7 @@ var Rageworld;
         drawWindow2(150, 550);
         drawWindow2(170, 550);
         drawEntry2(120, 585);
-        // Fenster Haus3
-        drawWindow3(205, 270);
+        drawWindow3(205, 270); // Fenster Haus3
         drawWindow3(225, 270);
         drawWindow3(245, 270);
         drawWindow3(205, 290);
@@ -143,8 +138,7 @@ var Rageworld;
         drawWindow3(225, 570);
         drawWindow3(245, 570);
         drawEntry3(210, 590);
-        // Fenster Haus4
-        drawWindow4(290, 140);
+        drawWindow4(290, 140); // Fenster Haus4
         drawWindow4(305, 140);
         drawWindow4(320, 140);
         drawWindow4(335, 140);
@@ -235,13 +229,6 @@ var Rageworld;
             human.y = (620 - 610) + 620;
             humans.push(human);
         }
-        //Schleife Alien
-        for (let i = 0; i < 1; i++) {
-            let alien = new Rageworld.Alien();
-            alien.x = Math.random() * Rageworld.ctx.canvas.width;
-            alien.y = Math.random() * 180;
-            aliens.push(alien);
-        }
         //Schleife Rauch
         for (let i = 0; i < 10; i++) {
             let bubble = new Rageworld.Bubbles();
@@ -250,31 +237,52 @@ var Rageworld;
             bubble.r = Math.random() * 5;
             bubbles.push(bubble);
         }
+        canvas.addEventListener("click", releaseBomb);
+        hitHuman();
         animate();
     }
     function animate() {
-        window.setTimeout(animate, 10);
         Rageworld.ctx.putImageData(imagedata, 0, 0);
-        moveHumans();
-        moveAliens();
-        moveBubbles();
-        drawHumans();
-        drawAliens();
-        drawBubbles();
+        if (humans.length == 0) {
+            alert("Congrats!");
+            window.location.reload();
+        }
+        else {
+            moveHumans();
+            moveBubbles();
+            moveBombs();
+            drawHumans();
+            drawBubbles();
+            drawBombs();
+            moveBombs();
+            window.setTimeout(animate, 10);
+        }
+    }
+    //Regentropfen ausl�sen
+    function releaseBomb(_event) {
+        let mouseX = _event.clientX;
+        let mouseY = _event.clientY;
+        let bomb = new Rageworld.Bombs(mouseX, mouseY);
+        bombs.push(bomb);
+    }
+    //Bei Treffen von Menschen
+    function hitHuman() {
+        window.setTimeout(hitHuman, 10);
+        for (let i = 0; i < humans.length; i++) {
+            for (let s = 0; s < bombs.length; s++) {
+                if (bombs[s].y > Rageworld.ctx.canvas.height) {
+                    bombs.splice(s, 1);
+                }
+                if (bombs[s].x > humans[i].x && bombs[s].x < humans[i].x + 20 && bombs[s].y > humans[i].y && bombs[s].y < humans[i].y + 40) {
+                    humans.splice(i, 1);
+                }
+            }
+        }
     }
     function moveHumans() {
         for (let i = 0; i < humans.length; i++) {
             humans[i].move();
         }
-    }
-    function moveAliens() {
-        for (let i = 0; i < aliens.length; i++) {
-            aliens[i].move();
-        }
-    }
-    function drawAliens() {
-        for (let i = 0; i < aliens.length; i++)
-            aliens[i].draw();
     }
     function moveBubbles() {
         for (let i = 0; i < bubbles.length; i++) {
@@ -289,7 +297,16 @@ var Rageworld;
         for (let i = 0; i < humans.length; i++)
             humans[i].draw();
     }
-    //Draw Funktionen
+    function moveBombs() {
+        for (let i = 0; i < bombs.length; i++) {
+            bombs[i].move();
+        }
+    }
+    function drawBombs() {
+        for (let i = 0; i < bombs.length; i++)
+            bombs[i].draw();
+    }
+    //Draw  Hintergrund Funktionen
     function drawBottom() {
         Rageworld.ctx.beginPath();
         Rageworld.ctx.moveTo(0, 640);
